@@ -1,10 +1,21 @@
 const Data = ({ data }) => {
-  const { name, timezone } = data;
+  const { coord, weather, wind, main, name } = data;
   return (
     <div className="my-8 mx-2 p-4 bg-white dark:bg-gray-700 rounded-lg shadow flex flex-col justify-center items-center">
-      <h2>Data</h2>
-      <h2 className="text-xl font-bold">{name}</h2>
-      <h2>{timezone}</h2>
+      <p className="text-lg font-semibold">{name}</p>
+      <p>
+        ( {coord.lon}, {coord.lat} )
+      </p>
+      <p className="mt-2 text-2xl font-bold">{weather[0].main}</p>
+      <p className="mb-2 capitalize text-lg font-medium">
+        {weather[0].description}
+      </p>
+      <p>
+        Temperature: <b>{main.temp} C</b>, humidity: <b>{main.humidity} %</b>
+      </p>
+      <p>
+        Wind Speed: <b>{wind.speed} m/s</b>
+      </p>
     </div>
   );
 };
