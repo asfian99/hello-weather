@@ -25,6 +25,7 @@ function App() {
       speed: null,
     },
     name: "",
+    message: "",
   });
 
   // console.log(dark);
