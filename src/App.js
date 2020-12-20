@@ -1,7 +1,6 @@
 import { useState } from "react";
 import Data from "./components/Data";
-
-const API_KEY = "f94ae2cc03c6b614017e6b6263489f71";
+import { API_KEY } from "./lib/config";
 
 function App() {
   const [city, setCity] = useState("");
@@ -32,7 +31,7 @@ function App() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const data = await fetch(
-      `http://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${API_KEY}`
+      `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${API_KEY}`
     );
     const newData = await data.json();
     setWeatherData(newData);
