@@ -42,7 +42,7 @@ function App() {
 
   return (
     <div className={dark ? "dark" : ""}>
-      <div className="flex flex-col h-screen mx-auto text-gray-800 dark:text-gray-200 bg-gray-200 dark:bg-gray-800 justify-center items-center">
+      <div className="flex flex-col min-h-screen mx-auto text-gray-800 dark:text-gray-200 bg-gray-200 dark:bg-gray-800 justify-center items-center">
         <h1 className="text-2xl font-semibold">Hello Weather</h1>
 
         {/* Dark mode switch */}

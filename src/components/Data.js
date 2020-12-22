@@ -11,7 +11,13 @@ const Data = ({ data }) => {
           <p>
             ( {coord.lon}, {coord.lat} )
           </p>
-          <p className="mt-2 text-2xl font-bold">{weather[0].main}</p>
+          <img
+            src={`https://openweathermap.org/img/wn/${weather[0].icon}@2x.png`}
+            alt="weather-icon"
+            srcset=""
+            className="mt-4 mb-2 bg-gray-300 dark:bg-gray-500 rounded-xl shadow-lg"
+          />
+          <p className="text-2xl font-bold">{weather[0].main}</p>
           <p className="mb-2 capitalize text-lg font-medium">
             {weather[0].description}
           </p>
