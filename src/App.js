@@ -4,37 +4,20 @@ import { API_KEY } from "./lib/config";
 
 function App() {
   const [city, setCity] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
   const [dark, setDark] = useState(false);
   const [showData, setShowData] = useState(false);
-  const [weatherData, setWeatherData] = useState({
-    coord: {
-      lon: null,
-      lat: null,
-    },
-    weather: [
-      {
-        main: "",
-        description: "",
-      },
-    ],
-    main: {
-      temp: null,
-      humidity: null,
-    },
-    wind: {
-      speed: null,
-    },
-    name: "",
-    message: "",
-  });
+  const [weatherData, setWeatherData] = useState({});
 
   // console.log(dark);
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setIsLoading(true);
     const data = await fetch(
       `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${API_KEY}`
     );
     const newData = await data.json();
+    await setIsLoading(false);
     setWeatherData(newData);
     setShowData(true);
     setCity("");
@@ -78,6 +61,15 @@ function App() {
           </button>
         </form>
 
+        <h2
+          className={
+            isLoading
+              ? `visible text-lg font-medium mt-2`
+              : `invisible text-lg font-medium mt-2`
+          }
+        >
+          Loading...
+        </h2>
         {showData ? <Data data={weatherData} /> : undefined}
 
         <footer className="my-4 p-2 text-center">
